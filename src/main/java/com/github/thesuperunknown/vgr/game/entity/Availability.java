@@ -40,6 +40,11 @@ public class Availability {
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
+	@Override
+	public String toString() {
+		return "Availability [id=" + id + ", name=" + name + "]";
+	}
+
 	@Column(name = "availability_id", nullable = false)
 	private Integer id;
 

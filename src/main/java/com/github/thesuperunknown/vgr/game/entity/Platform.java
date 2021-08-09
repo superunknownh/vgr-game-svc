@@ -48,6 +48,11 @@ public class Platform implements Serializable {
 		return Objects.equals(game, other.game) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
+	@Override
+	public String toString() {
+		return "Platform [id=" + id + ", name=" + name + ", game=" + game + "]";
+	}
+
 	@Id
 	@Column(name = "platform_id")
 	private String id;

@@ -41,6 +41,11 @@ public class Genre implements Serializable {
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
+	@Override
+	public String toString() {
+		return "Genre [id=" + id + ", name=" + name + "]";
+	}
+
 	private static final long serialVersionUID = 4586751289521447958L;
 
 	@Column(name = "genre_id", nullable = false)

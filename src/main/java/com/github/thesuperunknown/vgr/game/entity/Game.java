@@ -105,6 +105,13 @@ public class Game {
 				&& Objects.equals(updatedAt, other.updatedAt) && Objects.equals(year, other.year);
 	}
 
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", name=" + name + ", year=" + year + ", publisher=" + publisher + ", developer="
+				+ developer + ", genre=" + genre + ", platforms=" + platforms + ", availability=" + availability
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+	}
+
 	/*
 	 * https://thorben-janssen.com/generate-uuids-primary-keys-hibernate/
 	 */
