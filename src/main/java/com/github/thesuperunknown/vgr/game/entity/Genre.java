@@ -1,11 +1,12 @@
 package com.github.thesuperunknown.vgr.game.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Transient;
 
-public class Genre {
+public class Genre implements Serializable {
 
 	public Integer getId() {
 		return id;
@@ -39,6 +40,8 @@ public class Genre {
 		Genre other = (Genre) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
+
+	private static final long serialVersionUID = 4586751289521447958L;
 
 	@Column(name = "genre_id", nullable = false)
 	private Integer id;
