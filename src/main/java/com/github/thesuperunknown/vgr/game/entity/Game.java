@@ -9,12 +9,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "games")
@@ -113,15 +113,13 @@ public class Game {
 	}
 
 	/*
-	 * https://thorben-janssen.com/generate-uuids-primary-keys-hibernate/
+	 * @Todo check for https://thorben-janssen.com/generate-uuids-primary-keys-hibernate/
 	 */
 	@Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "id", length = 16, updatable = false, nullable = false)
 	private UUID id;
 
-	@Column(length = 64, nullable = false)
+	@Column(length = 64, nullable = false, unique = true)
 	private String name;
 
 	private Integer year;
@@ -132,12 +130,16 @@ public class Game {
 	@Column(length = 64)
 	private String developer;
 
+	// @Todo change genres relationship to ManyToMany
 	@Embedded
 	private Genre genre;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "game")
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "games_platforms", joinColumns = { @JoinColumn(name = "game_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "platform_id") })
 	private List<Platform> platforms;
 
+	// @Todo move availability to each platform
 	@Embedded
 	private Availability availability;
 

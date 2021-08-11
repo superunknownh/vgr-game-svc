@@ -1,19 +1,18 @@
 package com.github.thesuperunknown.vgr.game.entity;
 
-import java.io.Serializable;
-import java.util.Objects;
-
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "games_platforms")
-public class Platform implements Serializable {
+@Table(name = "platforms")
+public class Platform {
 
 	public String getId() {
 		return id;
@@ -31,40 +30,14 @@ public class Platform implements Serializable {
 		this.name = name;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(game, id, name);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Platform other = (Platform) obj;
-		return Objects.equals(game, other.game) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
-	}
-
-	@Override
-	public String toString() {
-		return "Platform [id=" + id + ", name=" + name + ", game=" + game + "]";
-	}
-
 	@Id
-	@Column(name = "platform_id")
+	@Column(name = "platform_id", length = 16, updatable = false, nullable = false)
 	private String id;
 
 	@Transient
 	private String name;
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "game_id", nullable = false, updatable = false)
-	private Game game;
-
-	private static final long serialVersionUID = 7785414856772722077L;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "platforms")
+	private List<Game> games;
 
 }

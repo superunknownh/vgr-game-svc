@@ -6,17 +6,16 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
-
 import org.springframework.stereotype.Repository;
 
 import com.github.thesuperunknown.vgr.game.entity.Platform;
 import com.github.thesuperunknown.vgr.game.utils.ResourcesUtils;
 
 @Repository
-public class PlatformRepositoryImpl implements PlatformRepository {
+public class ExtendedPlatformRepositoryImpl implements ExtendedPlatformRepository {
 
 	@Override
-	public Optional<Platform> getById(String id) {
+	public Optional<Platform> getByID(String id) {
 		if (!catalog.containsKey(id)) {
 			return Optional.empty();
 		}

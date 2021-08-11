@@ -1,0 +1,79 @@
+[
+	{
+		"name": "Metroid Samus Returns",
+		"year": 2017,
+		"publisher": "Nintendo",
+		"developer": "MercurySteam, Nintendo",
+		"genre": {
+			"id": 1
+		},
+		"platforms": [
+			{
+				"id": "N3DS"
+			}
+		],
+		"availability": {
+			"id": 1
+		}
+	},
+	{
+		"name": "Pokémon Omega Ruby",
+		"year": 2014,
+		"publisher": "Nintendo",
+		"developer": "Game Freak",
+		"genre": {
+			"id": 20,
+			"name": "Role-Play (RPG)"
+		},
+		"platforms": [
+			{
+				"id": "N3DS"
+			}
+		],
+		"availability": {
+			"id": 1,
+			"name": "Ready"
+		}
+	},
+	{
+		"name": "Pokémon X",
+		"year": 2013,
+		"publisher": "Nintendo",
+		"developer": "Game Freak",
+		"genre": {
+			"id": 20,
+			"name": "Role-Play (RPG)"
+		},
+		"platforms": [
+			{
+				"id": "N3DS"
+			},
+			{
+				"id": "PC"
+			}
+		],
+		"availability": {
+			"id": 1,
+			"name": "Ready"
+		}
+	},
+	{
+		"name": "Pokémon Y",
+		"year": 2013,
+		"publisher": "Nintendo",
+		"developer": "Game Freak",
+		"genre": {
+			"id": 20,
+			"name": "Role-Play (RPG)"
+		},
+		"platforms": [
+			{
+				"id": "N3DS"
+			}
+		],
+		"availability": {
+			"id": 1,
+			"name": "Ready"
+		}
+	}
+]
